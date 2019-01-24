@@ -1,18 +1,24 @@
 
+rm -f .coverage_*
+
 # run test_*
-COVERAGE_FILE=.coverage_unit PYTHONPATH=`pwd` python -m pytest --cov api tests/unit
+COVERAGE_FILE=.coverage_unit PYTHONPATH=`pwd` python -m pytest --cov="api" --cov-report="" tests/unit
 # run tavern
 #COVERAGE_FILE=.coverage_integration PYTHONPATH=`pwd` python -m pytest --tavern-http-backend=flask --tavern-global-cfg=tests/stories/tavern.conf.yaml --cov api tests/stories
 
-COVERAGE_FILE=.coverage_integration PYTHONPATH=`pwd` coverage run run.py &
-pid=$!
-#COVERAGE_FILE=.coverage_integration PYTHONPATH=`pwd` python -m pytest --tavern-http-backend=flask --cov api tests/stories
-#COVERAGE_FILE=.coverage_integration
+PYTHONPATH=`pwd` python run_with_coverage.py 2>/dev/null 1>/dev/null &
 PYTHONPATH=`pwd` python -m pytest tests/stories
-kill $pid
+# hack
+curl http://localhost:5000/quit
 
-#python -m coverage combine .coverage_unit .coverage_integration
-#python -m coverage html
+echo -e "\nIntegration tests coverage:"
+COVERAGE_FILE=.coverage_integration coverage report -m
 
+echo -e "\nUnit tests coverage:"
+COVERAGE_FILE=.coverage_unit coverage report -m
 
+python -m coverage combine .coverage_unit .coverage_integration
+echo -e "\nCombined coverage:"
+coverage report -m
+echo -e "\n"
 
