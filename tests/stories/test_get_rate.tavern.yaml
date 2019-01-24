@@ -1,0 +1,23 @@
+test_name: Get some fake data from the get_rate fake API
+
+stages:
+  - name: Get a rate for EUR
+    request:
+      url: http://localhost:5000/rate/EUR
+      method: GET
+    response:
+      status_code: 200
+      body:
+        'code': 200
+        'data': {'currency': 'EUR', 'id': 2, 'rate': 1.14}
+
+  - name: Get all rates
+    request:
+      url: http://localhost:5000/rates
+      method: GET
+    response:
+      status_code: 200
+      body:
+        'code': 200
+        'data': [{'currency': 'USD', 'id': 1, 'rate': 1.0}, {'currency': 'EUR', 'id': 2, 'rate': 1.14}]
+
