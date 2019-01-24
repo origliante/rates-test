@@ -1,0 +1,5 @@
+[run]
+omit=
+    */.virtualenvs/*
+    run_with_coverage.py
+
