@@ -5,7 +5,10 @@ from coverage import Coverage
 import api
 
 
-cov = Coverage(data_file='.coverage_integration')
+cov = Coverage(
+    data_file='.coverage_integration',
+    source=['api'],
+    )
 cov.start()
 
 @api.app.route('/quit', methods=['GET'])
