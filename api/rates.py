@@ -2,6 +2,7 @@
 from flask import Flask, jsonify
 
 from . import external_api
+from . import oer
 
 app = Flask(__name__)
 
@@ -36,3 +37,7 @@ def get_rate(currency):
     return _build_resp(rates)
 
 
+@app.route('/currencies', methods=['GET'])
+def get_currencies():
+    currencies = oer.get_currencies().json()
+    return _build_resp(currencies)
