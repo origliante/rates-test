@@ -1,0 +1,67 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.21.0]
+    method: GET
+    uri: https://openexchangerates.org/api/currencies.json?app_id=c4789b28f9dc4487a1af4ce27605672a
+  response:
+    body:
+      string: !!binary |
+        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
+        3T5CEwAA
+    headers:
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: [public]
+      Connection: [keep-alive]
+      Content-Encoding: [gzip]
+      Content-Length: ['2229']
+      Content-Type: [application/json; charset=utf-8]
+      Date: ['Thu, 07 Feb 2019 19:24:44 GMT']
+      Etag: [W/"47259aa11dd407725d189720bce2a884"]
+      Last-Modified: ['Mon, 20 Aug 2018 12:00:22 GMT']
+      Server: [nginx/1.12.2]
+      Vary: [Accept-Encoding]
+    status: {code: 200, message: OK}
+version: 1
