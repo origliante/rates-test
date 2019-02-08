@@ -40,4 +40,10 @@ def get_rate(currency):
 @app.route('/currencies', methods=['GET'])
 def get_currencies():
     currencies = oer.get_currencies().json()
-    return _build_resp(currencies)
+    filter_out = ('EUR', 'USD', 'JPY')
+    filtered = {}
+    for f in filter_out:
+        filtered[f] = currencies[f]
+    return _build_resp(filtered)
+
+
