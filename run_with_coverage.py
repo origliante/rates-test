@@ -1,6 +1,7 @@
 import os
 
 from coverage import Coverage
+import vcr
 
 import api
 
@@ -11,6 +12,7 @@ cov = Coverage(
     )
 cov.start()
 
+
 @api.app.route('/quit', methods=['GET'])
 def quit():
     global cov
@@ -18,6 +20,14 @@ def quit():
     cov.save()
     os.system('kill %d' % os.getpid())
 
+
 if __name__ == '__main__':
-    api.app.run(debug=True)
+    #if you wanna see if vcr is taking from a cassette
+    #import logging
+    #logging.basicConfig()
+    #vcr_log = logging.getLogger("vcr")
+    #vcr_log.setLevel(logging.INFO)
+
+    with vcr.use_cassette('tests/integration/get_currencies.yml'):
+        api.app.run(debug=True)
 
