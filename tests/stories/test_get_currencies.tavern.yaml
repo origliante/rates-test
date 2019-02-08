@@ -1,0 +1,14 @@
+test_name: Get all currencies from the fake API
+
+stages:
+  - name: Get all currencies
+    request:
+      url: http://localhost:5000/currencies
+      method: GET
+    response:
+      status_code: 200
+      body:
+        'code': 200
+        'data': {'EUR': 'Euro', 'USD': 'United States Dollar', 'JPY': 'Japanese Yen'}
+       
+ 
