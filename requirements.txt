@@ -32,5 +32,5 @@ six==1.12.0
 stevedore==1.30.0
 tavern==0.22.1
 urllib3==1.24.1
-Werkzeug==0.14.1
+Werkzeug==0.15.3
 vcrpy==1.7.4
